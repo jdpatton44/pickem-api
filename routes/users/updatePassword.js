@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import passport from 'passport';
 import bcrypt from 'bcrypt';
-import db from '../sequelize';
+import db from '../../sequelize';
 
 /**
  * @swagger

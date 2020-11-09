@@ -13,7 +13,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
-const User = require('../sequelize');
+const db = require('../sequelize');
 
 passport.use(
   'register',
@@ -29,7 +29,7 @@ passport.use(
       console.log(req.body.email);
 
       try {
-        User.findOne({
+        db.User.findOne({
           where: {
             [Op.or]: [
               {
@@ -46,7 +46,7 @@ passport.use(
             });
           }
           bcrypt.hash(password, BCRYPT_SALT_ROUNDS).then(hashedPassword => {
-            User.create({
+            db.User.create({
               username,
               password: hashedPassword,
               email: req.body.email,
@@ -73,7 +73,7 @@ passport.use(
     },
     (username, password, done) => {
       try {
-        User.findOne({
+        db.User.findOne({
           where: {
             username,
           },
@@ -106,7 +106,7 @@ passport.use(
   'jwt',
   new JWTstrategy(opts, (jwt_payload, done) => {
     try {
-      User.findOne({
+      db.User.findOne({
         where: {
           id: jwt_payload.id,
         },

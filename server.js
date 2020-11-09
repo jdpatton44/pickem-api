@@ -9,7 +9,7 @@ import helmet from 'helmet';
 
 const app = express();
 
-const API_PORT = process.env.API_PORT || 3003;
+const API_PORT = process.env.API_PORT || 3004;
 
 const swaggerDefinition = {
   info: {
@@ -17,7 +17,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: `Endpoints to the pick'em`,
   },
-  host: 'localhost:3003',
+  host: 'localhost:3004',
   basePath: '/',
   securityDefinitions: {
     bearerAuth: {
@@ -53,19 +53,19 @@ const whitelist = [
 //
 // TODO: FIX CORS FOR PRODUCTION!
 //
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) === -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) === -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   optionsSuccessStatus: 200,
+// };
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use(Cors(corsOptions));
+app.use(Cors()); //corsOptions
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
@@ -83,6 +83,7 @@ require('./routes/users/deleteUser')(app);
 require('./routes/users/updateUser')(app);
 require('./routes/teams/getTeam')(app);
 require('./routes/games/getGames')(app);
+require('./routes/games/getWeeksGames')(app);
 require('./routes/games/updateGameScores')(app);
 
 // eslint-disable-next-line no-console

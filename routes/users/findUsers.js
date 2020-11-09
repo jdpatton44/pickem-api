@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import passport from 'passport';
-import db from '../sequelize';
+import db from '../../sequelize';
 
 /**
  * @swagger
@@ -36,6 +36,7 @@ import db from '../sequelize';
 
 module.exports = (app) => {
   app.get('/findUser', (req, res, next) => {
+    console.log('finding user ----------------------------')
     passport.authenticate('jwt', { session: false }, (err, user, info) => {
       if (err) {
         console.log(err);

@@ -29,7 +29,8 @@
  *         - password
  */
 
-module.exports = (sequelize, type) => sequelize.define('user', {
+module.exports = (sequelize, type) => {
+  const user = sequelize.define('user', {
     id: {
       type: type.INTEGER,
       primaryKey: true,
@@ -51,4 +52,7 @@ module.exports = (sequelize, type) => sequelize.define('user', {
     },
     resetPasswordToken: type.STRING,
     resetPasswordExpires: type.DATE,
-  });
+  }, {});
+  return user;
+}
+  

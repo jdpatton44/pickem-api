@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import jwtSecret from '../config/jwtConfig';
-import db from '../sequelize';
+import jwtSecret from '../../config/jwtConfig';
+import db from '../../sequelize';
 
 /**
  * @swagger
@@ -42,6 +42,7 @@ import db from '../sequelize';
 
 module.exports = app => {
   app.post('/loginUser', (req, res, next) => {
+    console.log('logging in req ', req.body)
     passport.authenticate('login', (err, users, info) => {
       if (err) {
         console.error(`error ${err}`);
@@ -57,7 +58,7 @@ module.exports = app => {
         req.logIn(users, () => {
           db.User.findOne({
             where: {
-              username: req.body.username,
+              username: req.body.username
             },
           }).then(user => {
             const token = jwt.sign({ id: user.id }, jwtSecret.secret, {

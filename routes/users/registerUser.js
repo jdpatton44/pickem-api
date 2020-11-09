@@ -1,7 +1,7 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable no-console */
 import passport from 'passport';
-import db from '../sequelize';
+import db from '../../sequelize';
 
 /**
  * @swagger
@@ -46,6 +46,7 @@ import db from '../sequelize';
 
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
+    console.log('register user - ', req);
     passport.authenticate('register', (err, user, info) => {
       if (err) {
         console.error(err);

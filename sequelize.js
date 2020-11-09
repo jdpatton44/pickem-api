@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
 require('dotenv').config({ path: 'process.env' });
 
@@ -13,13 +13,15 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-sequelize.sync().then(() => {
-  // eslint-disable-next-line no-console
-  console.log('Users db and user table have been created');
-});
-
 db.User = require('./models/user')(sequelize, Sequelize);
 db.Team = require('./models/team')(sequelize, Sequelize);
 db.Game = require('./models/game')(sequelize, Sequelize);
+db.Bet = require('./models/bet')(sequelize, Sequelize);
+
+sequelize.sync().then(() => {
+  // eslint-disable-next-line no-console
+  console.log('Tables have been created');
+});
+
 
 module.exports = db;
