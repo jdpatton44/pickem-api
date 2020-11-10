@@ -57,11 +57,12 @@ module.exports = (sequelize, type) => {
       }
     },
     date: type.DATE,
+    displayName: type.STRING,
     venue: type.STRING,
     homeScore: type.INTEGER,
     visitorScore: type.INTEGER,
     status: type.INTEGER,
-    line: type.INTEGER,
+    line: type.FLOAT,
   });
   return game;
 }

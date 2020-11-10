@@ -20,6 +20,7 @@ module.exports = (app) => {
                 const game = {    
                   id: event.id,
                   week: weekNum,
+                  displayName: event.name,
                   homeTeam: event.competitions[0].competitors[0].homeAway ? event.competitions[0].competitors[0].id : event.competitions[0].competitors[1].id,
                   visitingTeam: event.competitions[0].competitors[0].homeAway ? event.competitions[0].competitors[1].id : event.competitions[0].competitors[0].id,
                   date: event.competitions[0].date,
