@@ -76,6 +76,7 @@ module.exports = app => {
                 first_name: data.first_name,
                 last_name: data.last_name,
                 email: data.email,
+                points: 10000,
               })
               .then(() => {
                 console.log('user created in db');
