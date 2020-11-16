@@ -83,6 +83,7 @@ require('./routes/users/deleteUser')(app);
 require('./routes/users/updateUser')(app);
 require('./routes/teams/getTeam')(app);
 require('./routes/games/getGames')(app);
+require('./routes/games/placeBet')(app);
 require('./routes/games/setLine')(app);
 require('./routes/games/setAllLines')(app);
 require('./routes/games/getWeeksGames')(app);
