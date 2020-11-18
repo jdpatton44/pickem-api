@@ -83,11 +83,12 @@ require('./routes/users/deleteUser')(app);
 require('./routes/users/updateUser')(app);
 require('./routes/teams/getTeam')(app);
 require('./routes/games/getGames')(app);
-require('./routes/games/placeBet')(app);
 require('./routes/games/setLine')(app);
 require('./routes/games/setAllLines')(app);
 require('./routes/games/getWeeksGames')(app);
 require('./routes/games/updateGameScores')(app);
+require('./routes/bets/placeBet')(app);
+require('./routes/bets/getUserBets')(app);
 
 // eslint-disable-next-line no-console
 app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));

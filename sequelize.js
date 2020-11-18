@@ -6,6 +6,9 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USER, proce
   host: process.env.DB_HOST,
   dialect: 'mysql',
   logging: true,
+  define: {
+    timestamps: true,
+}
 });
 
 const db = {};

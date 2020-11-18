@@ -30,19 +30,19 @@ module.exports = (sequelize, type) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    team: {
-        type: type.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'team',
-            key: 'id',
-        },
-    },
     game: {
         type: type.INTEGER,
         allowNull: false,
         references: {
             model: 'game',
+            key: 'id',
+        },
+    },
+    team: {
+        type: type.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'team',
             key: 'id',
         },
     },
