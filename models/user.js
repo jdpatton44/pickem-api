@@ -50,6 +50,11 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
       allowNull: false,
     },
+    points: {
+      type: type.INTEGER,
+      allowNull: false,
+      
+    },
     resetPasswordToken: type.STRING,
     resetPasswordExpires: type.DATE,
   }, {});

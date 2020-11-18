@@ -59,6 +59,8 @@ module.exports = (app) => {
               email: userInfo.email,
               username: userInfo.username,
               password: userInfo.password,
+              points: userInfo.points,
+              id: userInfo.id,
               message: 'user found in db',
             });
           } else {

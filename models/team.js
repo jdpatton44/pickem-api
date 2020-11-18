@@ -30,7 +30,8 @@
  *         - slug
  */
 
-module.exports = (sequelize, type) => sequelize.define('team', {
+module.exports = (sequelize, type) => {
+  const team = sequelize.define('team', {
     id: {
       type: type.INTEGER,
       primaryKey: true,
@@ -43,4 +44,6 @@ module.exports = (sequelize, type) => sequelize.define('team', {
     alternateColor: type.STRING,
     logo: type.STRING,
     link: type.STRING,
-  });
+  })
+  return team;
+};
